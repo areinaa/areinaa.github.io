@@ -103,8 +103,8 @@ analytics:
 author:
   name             : "Author NAME"
   avatar           : "/assets/images/profile-picture.jpg"
-  bio              : "BIO HERE"
-  location         : "Somewhere"
+  bio              : "Script kiddie"
+  location         : "Spain"
   email            :
   links:
     - label: "Email"
