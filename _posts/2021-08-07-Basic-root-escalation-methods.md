@@ -23,6 +23,10 @@ System OS
 ```bash
 lsb_release -a
 ```
+<p align="center">
+<img src="/assets/images/examplekernel.png">
+</p>
+
 A SUID binary file is an executable file which can be run by other users with the same privileges as the owner. This means that if this file's owner is root, we might be able to abuse those privileges to escalate permissions and run a root bash.
 To list SUID files we will have to move to the root directory and run this command:
 ```bash
