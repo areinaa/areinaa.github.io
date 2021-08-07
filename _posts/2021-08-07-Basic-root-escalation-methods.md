@@ -51,3 +51,5 @@ Looking at https://gtfobins.github.io/gtfobins/find/#suid and https://gtfobins.g
 <img src="/assets/images/rootfind.png">
 </p>
 
+### Abusing cron tasks
+
