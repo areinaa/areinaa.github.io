@@ -53,3 +53,23 @@ Looking at https://gtfobins.github.io/gtfobins/find/#suid and https://gtfobins.g
 
 ### Abusing cron tasks
 
+One of the things we can do to escalate privileges once we gain access to the machine is trying to abuse cron tasks.
+Cron tasks are binaries running in the background at a set interval of time; if these binaries permissions are not set properly, they can be abused by an attacker.
+
+To look for these tasks, we are going to set up a simple script to monitor commands being run at real time by using `ps -eo command`.
+
+```bash
+# !/bin/bash
+
+pold=$(ps -eo command)
+
+while true; do
+  pnew=$(ps -eo command)
+  diff <(echo "$pold") <(echo "$pnew") | grep "[\>\<]"
+  pold=$pnew
+done
+```
+First this script will scan all commands being run in the system and store them in `pold`. Next, inside an infinite while loop we will continiously store all commands being run inside another variable called `pnew`, we will then compare it with `pold` so we can get the difference in both variables(new commands have been run). We filter the result with a `grep` so only the new commands are being reported to us and update the `pold` variable at the end of the loop. Rinse and repeat until you find any suspicious activity.
+
+
+
