@@ -83,3 +83,7 @@ In this example we can see that there is a binary being run periodically at `/ho
 <p align="center">
 <img src="/assets/images/cronroot.png">
 </p>
+
+
+### PATH Hijacking
+
