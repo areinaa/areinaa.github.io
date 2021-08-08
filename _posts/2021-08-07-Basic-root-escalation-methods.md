@@ -125,3 +125,6 @@ Finally, if we run again the same binary it will read our malicious file in the 
 <img src="/assets/images/rootbash.png">
 </p>
 
+### Capabilities
+
+
