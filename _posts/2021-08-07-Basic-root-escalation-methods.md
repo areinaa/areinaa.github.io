@@ -86,4 +86,42 @@ In this example we can see that there is a binary being run periodically at `/ho
 
 
 ### PATH Hijacking
+Binaries can run system commands both with absolute routes `/usr/bin/cat` or relative routes `cat`. When you just type `cat` the system will look for its absolute route through an environment variable called PATH. If a binary with root privileges has a system command with a relative route, an attacker may modify their PATH variable so that the command the binary executes is a malicious one made by them.
+
+<p align="center">
+<img src="/assets/images/pathexample.png">
+</p>
+
+Example
+```C
+#include <stdio.h>
+
+void main(){
+setuid(0); //set root privileges
+
+printf("\nReading hosts:\n\n");
+system("/usr/bin/cat /etc/hosts");
+
+printf("\n\n\nReading hosts:\n\n");
+system("cat /etc/hosts");
+}
+```
+This binary will list twice the content of the hosts file with cat using root privileges. The only difference is that one of them uses absolute path and the other depends on the PATH.
+
+<p align="center">
+<img src="/assets/images/hostspath1.png">
+</p>
+
+Although if this binary were to be compiled we wouldn't know this information, by using the `strings` utility we can try reading the file and discern its content.
+
+<p align="center">
+<img src="/assets/images/stringshosts.png">
+</p>
+
+Knowing the binary is using `cat` as a relative route we can create a malicious file called `cat` in our home directory with `bash -p` as its content. Once created we can modify our PATH variable so it reads our current directory first with `export PATH=.:$PATH`.
+Finally, if we run again the same binary it will read our malicious file in the second `cat` and give us a root bash.
+
+<p align="center">
+<img src="/assets/images/rootbash.png">
+</p>
 
