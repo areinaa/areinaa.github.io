@@ -71,5 +71,15 @@ done
 ```
 First this script will scan all commands being run in the system and store them in `pold`. Next, inside an infinite while loop we will continiously store all commands being run inside another variable called `pnew`, we will then compare it with `pold` so we can get the difference in both variables(new commands have been run). We filter the result with a `grep` so only the new commands are being reported to us and update the `pold` variable at the end of the loop. Rinse and repeat until you find any suspicious activity.
 
+<p align="center">
+<img src="/assets/images/cronexample.png">
+</p>
+<p align="center">
+<img src="/assets/images/cronfile.png">
+</p>
 
+In this example we can see that there is a binary being run periodically at `/home/areina/Desktop/file.sh` whose owner is root and we have writting permission. The rest is as easy as modifying the content to get root privileges. In this case I will go for SUID exploitation.
 
+<p align="center">
+<img src="/assets/images/cronroot.png">
+</p>
