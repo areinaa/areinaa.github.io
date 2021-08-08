@@ -65,7 +65,7 @@ pold=$(ps -eo command)
 
 while true; do
   pnew=$(ps -eo command)
-  diff <(echo "$pold") <(echo "$pnew") | grep "[\>\<]"
+  diff <(echo "$pold") <(echo "$pnew") | grep "[\>\<]" | grep -v "kworker"
   pold=$pnew
 done
 ```
