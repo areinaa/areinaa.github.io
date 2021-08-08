@@ -125,3 +125,15 @@ Finally, if we run again the same binary it will read our malicious file in the 
 <img src="/assets/images/rootbash.png">
 </p>
 
+### Capabilities
+
+Another possible way of rooting a machine or establishing persistency is through the use of capabilities in binaries.
+
+Scanning
+```bash
+getcap -r / 2>/dev/null
+```
+Setting up capabilities in root binaries
+```bash
+setcap cap_setuid+ep /path/to/file
+```
