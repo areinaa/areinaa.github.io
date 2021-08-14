@@ -8,6 +8,7 @@ tags:
   - Capabilities
   - cron
 ---
+This post enumerates a series of methods which can be used once you have already gained access to a system user. Going through SUID listing, PATH hijacking and cron & capabilities abuse.
 
 ### Introduction: CVE and SUID
 
